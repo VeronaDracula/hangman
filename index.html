@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <title></title>
+</head>
+
+<body>
+    <div class="page">
+
+
+        <section>
+
+            <button class="start">начать</button>
+
+            <div class="top-block">
+                <div class="hangman-img-box">
+                    <img class="hangman-img hangman-img-1" data-id="1" src="./img/gallows-1.png" alt="">
+                    <img class="hangman-img hangman-img-2" data-id="2" src="./img/gallows-2.png" alt="">
+                    <img class="hangman-img hangman-img-3" data-id="3" src="./img/gallows-3.png" alt="">
+                    <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-4.png" alt="">
+                    <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-5.png" alt="">
+                    <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-6.png" alt="">
+                    <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-7.png" alt="">
+                </div>
+
+                <div class="topic">
+                    <h2 class="topic__title">Выбери тему</h2>
+
+                    <ul class="topic__list">
+                        <li class="topic__item" id="animals">животные</li>
+                        <li class="topic__item" id="food">еда</li>
+                        <li class="topic__item" id="plants">растения</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <ul class="word-write">
+                <template class="word-write-template">
+                    <li class="word-write__letter">
+                        <p class="word-write__text"></p>
+                    </li>
+                </template>
+                <!-- <li class="word-write__letter">
+                    <p class="word-write__text"></p>
+                </li>
+                <li class="word-write__letter">
+                    <p class="word-write__text"></p>
+                </li>
+                <li class="word-write__letter">
+                    <p class="word-write__text"></p>
+                </li>
+                <li class="word-write__letter">
+                    <p class="word-write__text"></p>
+                </li>
+                <li class="word-write__letter">
+                    <p class="word-write__text"></p>
+                </li> -->
+            </ul>
+
+
+
+
+            <div class="letters-fields">
+                <div class="letters-overlay disabled">
+                    <p class="letters-overlay__text">Вы проиграли</p>
+                </div>
+                <ul class="letters">
+                    <template class="letter-template">
+                        <li class="letter">
+                            <p class="letter__text"></p>
+                            <div class="letter__mark letter__mark--type--error"></div>
+                            <div class="letter__mark letter__mark--type--ok"></div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script type="module" src="./script.js"></script>
+
+</html>
