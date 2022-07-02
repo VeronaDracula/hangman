@@ -14,12 +14,21 @@
 <body>
     <div class="page">
 
+        <main class="content">
 
-        <section>
-
-            <button class="start">начать</button>
+            <p class="title-topic">Тема:<span class="title-topic__text"></span></p>
 
             <div class="top-block">
+                <div class="topic">
+<!--                    <h2 class="topic__title">Темы</h2>-->
+
+<!--                    <ul class="topic__list">-->
+<!--                        <li class="topic__item" id="animals">животные</li>-->
+<!--                        <li class="topic__item" id="food">еда</li>-->
+<!--                        <li class="topic__item" id="plants">растения</li>-->
+<!--                    </ul>-->
+                </div>
+
                 <div class="hangman-img-box">
                     <img class="hangman-img hangman-img-1" data-id="1" src="./img/gallows-1.png" alt="">
                     <img class="hangman-img hangman-img-2" data-id="2" src="./img/gallows-2.png" alt="">
@@ -29,19 +38,7 @@
                     <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-6.png" alt="">
                     <img class="hangman-img hangman-img-4" data-id="4" src="./img/gallows-7.png" alt="">
                 </div>
-
-                <div class="topic">
-                    <h2 class="topic__title">Выбери тему</h2>
-
-                    <ul class="topic__list">
-                        <li class="topic__item" id="animals">животные</li>
-                        <li class="topic__item" id="food">еда</li>
-                        <li class="topic__item" id="plants">растения</li>
-                    </ul>
-                </div>
             </div>
-
-
 
             <ul class="word-write">
                 <template class="word-write-template">
@@ -49,30 +46,32 @@
                         <p class="word-write__text"></p>
                     </li>
                 </template>
-                <!-- <li class="word-write__letter">
-                    <p class="word-write__text"></p>
-                </li>
-                <li class="word-write__letter">
-                    <p class="word-write__text"></p>
-                </li>
-                <li class="word-write__letter">
-                    <p class="word-write__text"></p>
-                </li>
-                <li class="word-write__letter">
-                    <p class="word-write__text"></p>
-                </li>
-                <li class="word-write__letter">
-                    <p class="word-write__text"></p>
-                </li> -->
             </ul>
 
-
-
-
             <div class="letters-fields">
-                <div class="letters-overlay disabled">
-                    <p class="letters-overlay__text">Вы проиграли</p>
+                <div class="letters-overlay letters-overlay--type--start d isabled">
+                    <p class="letters-overlay__text">Выбери тему</p>
+<!--                    <h2 class="topic__title">Темы</h2>-->
+                    <ul class="topic__list">
+                        <li class="topic__item" id="animals">животные</li>
+                        <li class="topic__item" id="food">еда</li>
+                        <li class="topic__item" id="plants">растения</li>
+                    </ul>
+                    <!-- <button class="letters-overlay__btn d isabled">Еще раз</button> -->
                 </div>
+
+                <div class="letters-overlay letters-overlay--type--new-game disabled">
+                    <p class="letters-overlay__text">Вы проиграли</p>
+                    <div class="letters-overlay__btns">
+                        <button class="letters-overlay__btn letters-overlay__btn--type--new-topic d isabled">Новая
+                            тема</button>
+                        <button
+                            class="letters-overlay__btn letters-overlay__btn--type--proceed d isabled">Продолжить</button>
+                    </div>
+
+
+                </div>
+
                 <ul class="letters">
                     <template class="letter-template">
                         <li class="letter">
@@ -83,8 +82,13 @@
                     </template>
                 </ul>
             </div>
-        </section>
+        </main>
+
+        <a class="link-icon" href="https://www.flaticon.com/ru/free-icons/-" title="иконки">Иконки сделаны Freepik с
+            сайта www.flaticon.com </a>
+
     </div>
+
 </body>
 
 <script type="module" src="./script.js"></script>

@@ -4,37 +4,45 @@ import {
 } from './utils.js';
 
 
-let word = 'ПАСТА';
+let word = 'ПАСТА'; //слово, которое надо угадать
+let wordFields = document.querySelectorAll('.word-write__text'); //поля для ввода букв
+let count = 0; //счет ходов
+
+const topics = document.querySelectorAll('.topic__item'); //темы
+const selectedTopic = document.querySelector('.title-topic__text'); //выбранная тема
+
+const gallowsImg = document.querySelectorAll('.hangman-img'); //картинки виселицы
+
+const lettersContainer = document.querySelector('.letters'); //контейнер букв
+const wordWriteContainer = document.querySelector('.word-write'); //контейнер слова
+
+const letterTemplateContent = document.querySelector('.letter-template').content; //шаблон букв
+const wordWriteTemplateContent = document.querySelector('.word-write-template').content; //шаблон слова
+
+// const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
+
+const overlay = document.querySelector('.letters-overlay'); //блокировщик букв
+const overlayText = document.querySelector('.letters-overlay__text');
+const overlayBtn = document.querySelector('.letters-overlay__btn');
 
 
-const overlay = document.querySelector('.letters-overlay');
 
-let wordFields = document.querySelectorAll('.word-write__text');
-const gallowsImg = document.querySelectorAll('.hangman-img');
-let count = 0;
-
-
-const lettersContainer = document.querySelector('.letters');
-const wordWriteContainer = document.querySelector('.word-write');
-
-const letterTemplateContent = document.querySelector('.letter-template').content;
-const wordWriteTemplateContent = document.querySelector('.word-write-template').content;
-
-
-
-
-const topics = document.querySelectorAll('.topic__item');
-
-
+//выбираем тему
 topics.forEach(topic => {
     topic.addEventListener('click', () => {
 
         word = arrayRandElement(askWord(topic.id, wordsTopic));
 
 
-        //почистили старые
+        //почистили старые буквы выбора
         const letterItems = document.querySelectorAll('.letter');
         letterItems.forEach((item) => {
+            item.remove();
+        })
+
+        //почистили старые буквы слова
+        const letterWordItems = document.querySelectorAll('.word-write__letter');
+        letterWordItems.forEach((item) => {
             item.remove();
         })
 
@@ -44,14 +52,9 @@ topics.forEach(topic => {
             addCard(wordWriteContainer, wordWriteElement);
         }
 
-        // let wordLength = 0;
-        // while (wordLength < word.length) {
-        //     const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
-        //     addCard(wordWriteContainer, wordWriteElement);
-        //     wordLength++;
-        //     console.log(wordLength)
-        // }
 
+        overlay.classList.add('disabled');
+        selectedTopic.textContent = topic.textContent;
 
         wordFields = document.querySelectorAll('.word-write__text');
 
@@ -60,12 +63,13 @@ topics.forEach(topic => {
 })
 
 
+//рандомное слово из списка
 function arrayRandElement(arr) {
     const rand = Math.floor(Math.random() * arr.length);
     return arr[rand];
 }
 
-
+//задаем слово из темы
 function askWord(topic, wordsTopic) {
     let words = [];
 
@@ -77,15 +81,6 @@ function askWord(topic, wordsTopic) {
 
     return words
 }
-
-
-
-
-
-
-
-
-
 
 
 //определение индексов буквы
@@ -133,6 +128,8 @@ function setEventListeners(letterElement) {
             }
             if (count === 7) {
                 overlay.classList.remove('disabled');
+                overlayText.textContent = 'Вы проиграли';
+                overlayBtn.classList.remove('disabled');
             }
         }
     })

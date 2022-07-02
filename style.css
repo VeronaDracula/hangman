@@ -1,17 +1,66 @@
-.top-block {
-    display: flex;
+body {
+    margin: 0;
 }
 
+.disabled {
+    display: none!important;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: center no-repeat url("./img/back-3.jpg");
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    width: 100%;
+    padding: 25px 25px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #87CEFA, #C5DDE8);
+}
+
+
+/* выбранная тема */
+.title-topic {
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 37px;
+    margin: 0 0 20px 0;
+    color: 	#4B0082;
+}
+
+.title-topic__text {
+    margin-left: 5px;
+}
+
+
+.top-block {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+
+/* картинки */
 .hangman-img-box {
     position: relative;
-    width: 300px;
+    width: 200px;
     height: 300px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .hangman-img {
     position: absolute;
-    opacity: 0;
+    opacity: 0; /*!!!! должно быть 0*/
 }
 
 .hangman-img-2 {
@@ -31,7 +80,11 @@
 }
 
 
+/* выбираем тему */
 .topic {
+    position: absolute;
+    top: 0;
+    left: 0;
     font-family: "Inter", sans-serif!important;
 }
 
@@ -39,13 +92,13 @@
     font-weight: 400;
     font-size: 25px;
     line-height: 27px;
-    margin: 0 0 15px 0;
-    color: 	#4B0082;
+    margin: 0 0 10px 0;
+    color: 	#191970;
 }
 
 .topic__list {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 10px;
 }
 
 .topic__item {
@@ -53,8 +106,8 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 22px;
-    color: 	#4B0082;
-    margin: 0 0 10px 0;
+    color: 	#191970;
+    margin: 0 0 5px 0;
 }
 
 .topic__item:last-child {
@@ -63,14 +116,17 @@
 
 .topic__item:hover {
     cursor: pointer;
-    color: #8A2BE2;
+    color: #6A5ACD;
 }
 
 
-
+/* пишем слово */
 .word-write {
     display: flex;
     align-items: center;
+    height: 40px;
+    margin: 0 0 50px 0;
+    padding: 0;
 }
 
 .word-write__letter {
@@ -99,21 +155,22 @@
 
 
 
-
+/* буквы оверлей*/
 .letters-fields {
     position: relative;
 }
 
 .letters-overlay {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     z-index: 1;
     font-family: "Inter", sans-serif!important;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(135, 206, 250, 0.8);
     height: 208px;
-    width: 700px;
+    width: 100%;
 }
 
 .letters-overlay__text {
@@ -121,16 +178,47 @@
     font-weight: 500;
     font-size: 60px;
     line-height: 62px;
+    margin: 0 0 20px 0;
+    color: #191970;
 }
 
-.disabled {
-    display: none!important;
+.letters-overlay__btns {
+    display: flex;
+    align-items: center;
+}
+
+.letters-overlay__btn {
+    width: 130px;
+    height: 34px;
+    background: #1E90FF;
+    border-radius: 6px;
+    border: none;
+    font-weight: 00;
+    font-size: 15px;
+    line-height: 17px;
+    padding: 0;
+    margin-right: 20px;
+
+    color: white;
+    font-family: "Inter", sans-serif!important;
+}
+
+.letters-overlay__btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.letters-overlay__btn:last-child {
+    margin-right: 0;
 }
 
 
+/* буквы*/
 .letters {
     display: grid;
     grid-template-columns: repeat(10, 60px);
+    padding: 0;
+    margin: 0;
 }
 
 .letter {
@@ -185,16 +273,8 @@
 }
 
 
-
-/* 
-.gallows {
-    width: 300px;
-    height: 300px;
-
+.link-icon {
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
 }
-
-.gallows__bottom {
-    border-bottom: 15px solid #4B0082;
-    height: 0;
-} */
-
