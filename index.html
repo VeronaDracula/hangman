@@ -19,16 +19,6 @@
             <p class="title-topic">Тема:<span class="title-topic__text"></span></p>
 
             <div class="top-block">
-                <div class="topic">
-<!--                    <h2 class="topic__title">Темы</h2>-->
-
-<!--                    <ul class="topic__list">-->
-<!--                        <li class="topic__item" id="animals">животные</li>-->
-<!--                        <li class="topic__item" id="food">еда</li>-->
-<!--                        <li class="topic__item" id="plants">растения</li>-->
-<!--                    </ul>-->
-                </div>
-
                 <div class="hangman-img-box">
                     <img class="hangman-img hangman-img-1" data-id="1" src="./img/gallows-1.png" alt="">
                     <img class="hangman-img hangman-img-2" data-id="2" src="./img/gallows-2.png" alt="">
@@ -50,26 +40,24 @@
 
             <div class="letters-fields">
                 <div class="letters-overlay letters-overlay--type--start d isabled">
-                    <p class="letters-overlay__text">Выбери тему</p>
-<!--                    <h2 class="topic__title">Темы</h2>-->
-                    <ul class="topic__list">
-                        <li class="topic__item" id="animals">животные</li>
-                        <li class="topic__item" id="food">еда</li>
-                        <li class="topic__item" id="plants">растения</li>
-                    </ul>
-                    <!-- <button class="letters-overlay__btn d isabled">Еще раз</button> -->
+                    <div class="topic">
+                        <h2 class="topic__title">Выберите тему</h2>
+
+                        <ul class="topic__list">
+                            <li class="topic__item" id="animals">животные</li>
+                            <li class="topic__item" id="food">еда</li>
+                            <li class="topic__item" id="plants">растения</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="letters-overlay letters-overlay--type--new-game disabled">
                     <p class="letters-overlay__text">Вы проиграли</p>
                     <div class="letters-overlay__btns">
-                        <button class="letters-overlay__btn letters-overlay__btn--type--new-topic d isabled">Новая
+                        <button class="letters-overlay__btn letters-overlay__btn--type--new-topic">Новая
                             тема</button>
-                        <button
-                            class="letters-overlay__btn letters-overlay__btn--type--proceed d isabled">Продолжить</button>
+                        <button class="letters-overlay__btn letters-overlay__btn--type--proceed">Продолжить</button>
                     </div>
-
-
                 </div>
 
                 <ul class="letters">
@@ -86,7 +74,6 @@
 
         <a class="link-icon" href="https://www.flaticon.com/ru/free-icons/-" title="иконки">Иконки сделаны Freepik с
             сайта www.flaticon.com </a>
-
     </div>
 
 </body>

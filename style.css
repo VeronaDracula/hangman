@@ -22,7 +22,7 @@ body {
     align-items: center;
     max-width: 700px;
     width: 100%;
-    padding: 25px 25px;
+    padding: 30px 30px;
     border-radius: 30px;
     background: linear-gradient(45deg, #87CEFA, #C5DDE8);
 }
@@ -55,7 +55,7 @@ body {
     position: relative;
     width: 200px;
     height: 300px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .hangman-img {
@@ -77,46 +77,6 @@ body {
 
 .img-active {
     opacity: 1;
-}
-
-
-/* выбираем тему */
-.topic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: "Inter", sans-serif!important;
-}
-
-.topic__title {
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 27px;
-    margin: 0 0 10px 0;
-    color: 	#191970;
-}
-
-.topic__list {
-    margin: 0;
-    padding: 0 0 0 10px;
-}
-
-.topic__item {
-    list-style: none;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 22px;
-    color: 	#191970;
-    margin: 0 0 5px 0;
-}
-
-.topic__item:last-child {
-    margin-bottom: 0;
-}
-
-.topic__item:hover {
-    cursor: pointer;
-    color: #6A5ACD;
 }
 
 
@@ -168,9 +128,11 @@ body {
     position: absolute;
     z-index: 1;
     font-family: "Inter", sans-serif!important;
-    background-color: rgba(135, 206, 250, 0.8);
+    /* background-color: rgba(135, 206, 250, 0.8); */
+    background: linear-gradient(45deg, rgba(135, 206, 250, 0.9), rgba(169, 215, 241, 0.9));
     height: 208px;
     width: 100%;
+    border-radius: 6px;
 }
 
 .letters-overlay__text {
@@ -211,6 +173,47 @@ body {
 .letters-overlay__btn:last-child {
     margin-right: 0;
 }
+
+
+/* выбираем тему */
+.topic {
+    font-family: "Inter", sans-serif!important;
+}
+
+.topic__title {
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 47px;
+    margin: 0 0 35px 0;
+    color: 	#191970;
+    text-align: center;
+}
+
+.topic__list {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.topic__item {
+    list-style: none;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 32px;
+    color: 	#191970;
+    margin: 0 20px 0 0;
+}
+
+.topic__item:last-child {
+    margin-right: 0;
+}
+
+.topic__item:hover {
+    cursor: pointer;
+    color: #483D8B;
+}
+
 
 
 /* буквы*/
@@ -276,5 +279,5 @@ body {
 .link-icon {
     color: white;
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 30px;
 }

@@ -3,13 +3,13 @@ import {
     alphabet
 } from './utils.js';
 
-
 let word = 'ПАСТА'; //слово, которое надо угадать
 let wordFields = document.querySelectorAll('.word-write__text'); //поля для ввода букв
 let count = 0; //счет ходов
+let countRight = 0; //счет правильных букв
 
 const topics = document.querySelectorAll('.topic__item'); //темы
-const selectedTopic = document.querySelector('.title-topic__text'); //выбранная тема
+const selectedTopicBox = document.querySelector('.title-topic__text'); //выбранная тема
 
 const gallowsImg = document.querySelectorAll('.hangman-img'); //картинки виселицы
 
@@ -21,46 +21,89 @@ const wordWriteTemplateContent = document.querySelector('.word-write-template').
 
 // const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
 
-const overlay = document.querySelector('.letters-overlay'); //блокировщик букв
-const overlayText = document.querySelector('.letters-overlay__text');
-const overlayBtn = document.querySelector('.letters-overlay__btn');
+//блокировщик букв
+const overlayStart = document.querySelector('.letters-overlay--type--start');
+const overlayNewGame = document.querySelector('.letters-overlay--type--new-game');
+const overlayNewGameText = document.querySelector('.letters-overlay__text');
+const overlayBtnNewTopic = document.querySelector('.letters-overlay__btn--type--new-topic');
+const overlayBtnProceed = document.querySelector('.letters-overlay__btn--type--proceed');
+
+
+let selectedTopic = '';
 
 
 
 //выбираем тему
 topics.forEach(topic => {
     topic.addEventListener('click', () => {
+        gallowsImg.forEach(img => {
+            img.classList.remove('img-active');
+        })
 
         word = arrayRandElement(askWord(topic.id, wordsTopic));
+        selectedTopic = topic;
 
+        renderWordFields(word, topic);
 
-        //почистили старые буквы выбора
-        const letterItems = document.querySelectorAll('.letter');
-        letterItems.forEach((item) => {
-            item.remove();
-        })
+        // //почистили старые буквы выбора
+        // const letterItems = document.querySelectorAll('.letter');
+        // letterItems.forEach((item) => {
+        //     item.remove();
+        // })
 
-        //почистили старые буквы слова
-        const letterWordItems = document.querySelectorAll('.word-write__letter');
-        letterWordItems.forEach((item) => {
-            item.remove();
-        })
+        // //почистили старые буквы слова
+        // const letterWordItems = document.querySelectorAll('.word-write__letter');
+        // letterWordItems.forEach((item) => {
+        //     item.remove();
+        // })
 
+        // for (const letter in word) {
+        //     const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
+        //     addCard(wordWriteContainer, wordWriteElement);
+        // }
 
-        for (const letter in word) {
-            const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
-            addCard(wordWriteContainer, wordWriteElement);
-        }
+        // overlayStart.classList.add('disabled');
+        // selectedTopicBox.textContent = topic.textContent;
 
+        // wordFields = document.querySelectorAll('.word-write__text');
 
-        overlay.classList.add('disabled');
-        selectedTopic.textContent = topic.textContent;
-
-        wordFields = document.querySelectorAll('.word-write__text');
-
-        receivingData(alphabet, lettersContainer);
+        // receivingData(alphabet, lettersContainer);
     })
 })
+
+
+function renderWordFields(word, topic) {
+
+    //почистили старые буквы выбора
+    const letterItems = document.querySelectorAll('.letter');
+    letterItems.forEach((item) => {
+        item.remove();
+    })
+
+    //почистили старые буквы слова
+    const letterWordItems = document.querySelectorAll('.word-write__letter');
+    letterWordItems.forEach((item) => {
+        item.remove();
+    })
+
+    for (const letter in word) {
+        const wordWriteElement = wordWriteTemplateContent.cloneNode(true);
+        addCard(wordWriteContainer, wordWriteElement);
+    }
+
+    overlayStart.classList.add('disabled');
+    selectedTopicBox.textContent = topic.textContent;
+
+    wordFields = document.querySelectorAll('.word-write__text');
+
+    receivingData(alphabet, lettersContainer);
+
+}
+
+
+
+
+
 
 
 //рандомное слово из списка
@@ -115,7 +158,15 @@ function setEventListeners(letterElement) {
 
             lettersIndex.forEach(index => {
                 wordFields[index].textContent = letter;
+                countRight += 1;
             })
+
+            if (word.length === countRight) {
+                overlayNewGame.classList.remove('disabled');
+                overlayNewGameText.textContent = 'Вы победили';
+                countRight = 0;
+                count = 0;
+            }
 
         } else {
             error.classList.add('mark-active');
@@ -127,9 +178,14 @@ function setEventListeners(letterElement) {
                 count += 1;
             }
             if (count === 7) {
-                overlay.classList.remove('disabled');
-                overlayText.textContent = 'Вы проиграли';
-                overlayBtn.classList.remove('disabled');
+                overlayNewGame.classList.remove('disabled');
+                overlayNewGameText.textContent = 'Вы проиграли';
+                countRight = 0;
+                count = 0;
+
+                wordFields.forEach((field, index) => {
+                    wordFields[index].textContent = word[index];
+                })
             }
         }
     })
@@ -166,3 +222,18 @@ function receivingData(letters, container) {
 }
 
 receivingData(alphabet, lettersContainer);
+
+
+overlayBtnNewTopic.addEventListener('click', () => {
+    overlayStart.classList.remove('disabled');
+    overlayNewGame.classList.add('disabled');
+})
+
+overlayBtnProceed.addEventListener('click', () => {
+    word = arrayRandElement(askWord(selectedTopic.id, wordsTopic));
+    renderWordFields(word, selectedTopic);
+    overlayNewGame.classList.add('disabled');
+    gallowsImg.forEach(img => {
+        img.classList.remove('img-active');
+    })
+})
