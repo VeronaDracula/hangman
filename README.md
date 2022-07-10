@@ -1,3 +1,4 @@
 # hangman
 
-# Ссылка для просмотра: https://veronadracula.github.io/hangman/
+# Ссылка для просмотра:   
+https://veronadracula.github.io/hangman/
