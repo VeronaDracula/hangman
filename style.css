@@ -22,7 +22,7 @@ body {
     align-items: center;
     max-width: 700px;
     width: 100%;
-    padding: 30px 30px;
+    padding: 25px 25px;
     border-radius: 30px;
     background: linear-gradient(45deg, #87CEFA, #C5DDE8);
 }
@@ -33,7 +33,7 @@ body {
     font-weight: 500;
     font-size: 35px;
     line-height: 37px;
-    margin: 0 0 20px 0;
+    margin: 0;
     color: 	#4B0082;
 }
 
@@ -55,7 +55,7 @@ body {
     position: relative;
     width: 200px;
     height: 300px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .hangman-img {
@@ -279,5 +279,5 @@ body {
 .link-icon {
     color: white;
     text-decoration: none;
-    margin-top: 30px;
+    margin-top: 10px;
 }
